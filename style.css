@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100dvh;           /* hauteur totale de la fenêtre visible */
+  font-family: sans-serif;
+  text-align: center;
+  overflow: hidden;         /* supprime le scroll vertical */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(45deg, gray, rgb(71, 71, 71), gray);
+  background-size: 300% 300%;
+  animation: monAnim 6s ease-in-out infinite;
+  padding: 1rem;
+}
+
+@keyframes monAnim {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Header */
+h1 {
+  color: antiquewhite;
+  display: inline-block;
+  text-align: center;
+  border: 2px solid black;
+  padding: 1rem;
+  border-radius: 15px;
+  background: linear-gradient(blue, black);
+  margin-bottom: 1rem;
+}
+
+/* Tableau de bord (score + boutons) */
+#tableauBord {
+  display: flex;
+  justify-content: space-around;
+  width: 90vw;
+  max-width: 600px;
+  margin-bottom: 1rem;
+}
+
+#score, .pHS, #pHS {
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  color: beige;
+  margin: 0;
+}
+
+/* Grille 4x4 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 90vmin;       /* prend 90% de la plus petite dimension de l'écran */
+  height: 90vmin;      /* carré parfait */
+  max-width: 600px;    /* limite pour grand écran */
+  max-height: 600px;
+  margin: 0 auto;
+}
+
+/* Cartes */
+.card {
+  width: 100%;
+  height: 100%;        /* remplit la cellule */
+  background-color: #3498db;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  transition: ease-in 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 5px 5px 10px gray;
+}
+
+.card.flipped {
+  background-color: #d8d7d7;
+  box-shadow: 5px 5px 10px gray;
+}
+
+/* Fenêtre victoire */
+#victory {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  padding: 2%;
+  top: 40%;
+  left: 10%;
+  height: 50%;
+  width: 80%;
+  background-color: rgb(25, 25, 25);
+  border-radius: 10px;
+  align-items: center;
+}
+
+/* Boutons */
+button {
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: gray;
+  color: red;
+  cursor: pointer;
+  margin-top: auto;
+  align-items: center;
+}

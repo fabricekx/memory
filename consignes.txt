@@ -1,0 +1,11 @@
+1. On va garder la partie js, mais on va générer la html aléatoirement pour mélanger les cartes
+a- créer un tableau avec les émojis
+b- suprimer les cards du html
+
+2. Créer le tableau cards en parcourant le tableau émoji, faire 2 push.
+
+3. Créer une fonction permettant de mélanger les cartes dans cards
+
+4. Changer le nom du tableau contenant les cards du dom en allCards, pour ne pas confondre 
+avec le tableau cards que nous venons de créer.
+
