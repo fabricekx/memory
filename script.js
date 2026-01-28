@@ -52,7 +52,12 @@ cardsArray.forEach(value => {
   const card = document.createElement("div");
   card.classList.add("card");
   card.dataset.value = value;
-  grid.appendChild(card);
+
+  // créer l'intérieur de la carte
+    const inner = document.createElement("div");
+    inner.classList.add("card-inner");
+    card.appendChild(inner);
+     grid.appendChild(card);
 
   // ajout ici de la logique click
    card.addEventListener('click', () => {
@@ -61,7 +66,7 @@ cardsArray.forEach(value => {
 
     card.classList.add('flipped');
     // card.innerText ="retournée";
-    card.innerText = card.dataset.value;
+    inner.innerText = card.dataset.value;
 
       // ajouter au tableau des cartes retournées
     flippedCards.push(card);
@@ -86,11 +91,12 @@ function checkPair() { // remarque: bug possible si on click trop vite, il faudr
   } else {
     // paire incorrecte → retourner après 1 sec
     setTimeout(() => {
-      card1.classList.remove('flipped');
-      card1.innerHTML = '';
-
+        card1.classList.remove('flipped');
       card2.classList.remove('flipped');
-      card2.innerHTML = '';
+
+      // vider uniquement le texte de l'inner
+      card1.querySelector('.card-inner').innerText = '';
+      card2.querySelector('.card-inner').innerText = '';
 
       flippedCards = []; // réinitialiser
     }, 1000);

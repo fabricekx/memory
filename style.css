@@ -5,10 +5,10 @@
 }
 
 html, body {
-  height: 100dvh;           /* hauteur totale de la fenêtre visible */
+  height: 100dvh;
   font-family: sans-serif;
   text-align: center;
-  overflow: hidden;         /* supprime le scroll vertical */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +37,7 @@ h1 {
   margin-bottom: 1rem;
 }
 
-/* Tableau de bord (score + boutons) */
+/* Tableau de bord */
 #tableauBord {
   display: flex;
   justify-content: space-around;
@@ -46,42 +46,52 @@ h1 {
   margin-bottom: 1rem;
 }
 
-#score, .pHS, #pHS {
+#score, .pHS, #pHS, #score2 {
   font-size: 1.5rem;
   font-family: sans-serif;
   color: beige;
   margin: 0;
 }
 
-/* Grille 4x4 */
+/* Grille 4x4 responsive */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  width: 90vmin;       /* prend 90% de la plus petite dimension de l'écran */
-  height: 90vmin;      /* carré parfait */
-  max-width: 600px;    /* limite pour grand écran */
+  grid-auto-rows: 1fr;
+  gap: 0.5rem;
+  width: 90vmin;         /* carré selon la plus petite dimension */
+  height: 90vmin;
+  max-width: 600px;      /* limite sur grand écran */
   max-height: 600px;
   margin: 0 auto;
 }
 
 /* Cartes */
 .card {
-  width: 100%;
-  height: 100%;        /* remplit la cellule */
   background-color: #3498db;
   border-radius: 10px;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2em;
-  transition: ease-in 0.2s;
+  transition: transform 0.2s ease-in-out;
 }
 
-.card:hover {
-  transform: scale(1.02);
-  box-shadow: 5px 5px 10px gray;
+.card.flipped .card-inner {
+  transform: translate(-50%, -50%) scale(1.2);
 }
 
 .card.flipped {
@@ -89,29 +99,45 @@ h1 {
   box-shadow: 5px 5px 10px gray;
 }
 
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 5px 10px gray;
+}
+
 /* Fenêtre victoire */
 #victory {
   display: none;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   padding: 2%;
-  top: 40%;
-  left: 10%;
+  top: 30%;
+  left: 20%;
   height: 50%;
-  width: 80%;
+  width: 60%;
   background-color: rgb(25, 25, 25);
   border-radius: 10px;
   align-items: center;
+  justify-content: space-between;
 }
 
 /* Boutons */
 button {
-  width: fit-content;
   border-radius: 10px;
   padding: 10px;
   background-color: gray;
   color: red;
   cursor: pointer;
-  margin-top: auto;
   align-items: center;
+}
+
+/* Responsive pour smartphone */
+@media (max-width: 500px) {
+  .grid {
+    width: 95vw;
+    height: 95vw;
+    gap: 0.25rem;
+  }
+  .card-inner {
+    font-size: 1.5em;
+  }
 }
