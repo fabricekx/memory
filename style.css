@@ -131,13 +131,21 @@ button {
 }
 
 /* Responsive pour smartphone */
-@media (max-width: 500px) {
+@media (max-width: 660px) {
   .grid {
     width: 95vw;
     height: 95vw;
     gap: 0.25rem;
   }
   .card-inner {
-    font-size: 1.5em;
+    font-size: 2em;
+  }
+
+  button {
+    font-size: 1.2rem;
+  color: blue;}
+
+  #victory, #score2, #pHS {
+    font-size: 2rem;
   }
 }
